@@ -61,7 +61,12 @@ jobs:
         host: linux
 
     - name: Setup CLI
-      uses: geode-sdk/cli/.github/actions/setup@main
+  uses: geode-sdk/cli/.github/actions/setup@main
+
+    - name: Setup Geode CLI Profile
+  run: |
+    geode profile add ci
+    geode profile select ci
 
     - name: Download xwin
       uses: robinraju/release-downloader@v1.10
