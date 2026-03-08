@@ -28,7 +28,7 @@ env:
     -G Ninja
   base-build-command: |
     cmake --build build --config RelWithDebInfo --parallel
-    rm bin/nightly/resources/.geomoded_cache
+    rm bin/nightly/resources/.geode_cache
 
 jobs:
   build-windows:
@@ -61,12 +61,7 @@ jobs:
         host: linux
 
     - name: Setup CLI
-  uses: geode-sdk/cli/.github/actions/setup@main
-
-    - name: Setup Geode CLI Profile
-  run: |
-    geode profile add ci
-    geode profile select ci
+      uses: geode-sdk/cli/.github/actions/setup@main
 
     - name: Download xwin
       uses: robinraju/release-downloader@v1.10
@@ -128,6 +123,7 @@ jobs:
         ${{ env.base-configure-command }}
         -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+        -DGEODE_UNITY_BUILD=ON
         ${{ steps.build-debug-info.outputs.extra-configure }}
       env:
         SPLAT_DIR: ${{ github.workspace }}/.xwin-cache/splat
@@ -198,6 +194,11 @@ jobs:
 
     - name: Setup CLI
       uses: geode-sdk/cli/.github/actions/setup@main
+
+    - name: config cli
+      run: geode profile add ci & geode profile select ci
+      
+      
 
     - name: Configure
       run: >
