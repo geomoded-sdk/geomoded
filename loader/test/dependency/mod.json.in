@@ -1,5 +1,5 @@
 {
-    "geomoded":        "@geomoded_VERSION_FULL@",
+    "geode":        "@GEODE_VERSION_FULL@",
     "gd": {
         "win": "*",
         "mac": "*",
@@ -7,10 +7,10 @@
         "ios": "*"
     },
 	"version":      "1.0.0",
-	"id":           "geomoded.testdep",
-    "name":         "geomoded Test Dependency",
-    "developer":    "geomoded Team",
-    "description":  "Unit test dependency for geomoded",
+	"id":           "geode.testdep",
+    "name":         "Geode Test Dependency",
+    "developer":    "Geode Team",
+    "description":  "Unit test dependency for Geode",
     "api": {
         "include": []
     },
